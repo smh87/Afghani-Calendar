@@ -1,0 +1,75 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Afghani Calendar</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <link href="css/persian-datepicker-0.4.5.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="js/persian-date.js"></script>
+    <script type="text/javascript" src="js/persian-datepicker-0.4.5.min.js"></script>
+    <style>
+        .center-block {
+            width: 900px;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+    /*
+     Default Functionality
+     */
+    $(document).ready(function () {
+        /*
+         Default
+         */
+        window.pd = $("#inlineDatepicker").persianDatepicker({
+            timePicker: {
+                enabled: false
+            },
+            altField: '#inlineDatepickerAlt',
+            altFormat: "YYYY MM DD HH:mm:ss",
+            checkDate: function (unix) {
+                var output = true;
+                var d = new persianDate(unix);
+                if (d.date() == 20) {
+                    output = false;
+                }
+                return output;
+            },
+            checkMonth: function (month) {
+                var output = true;
+                if (month == 1) {
+                    output = false;
+                }
+                return output;
+
+            }, checkYear: function (year) {
+                var output = true;
+                if (year == 1396) {
+                    output = false;
+                }
+                return output;
+            }
+
+        }).data('datepicker');
+
+      });
+</script>
+<div class="col-xs-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>Afghani Calendar by Mostaan Hashemi</h4>
+        </div>
+        <div class="panel-body">
+            <div id="inlineDatepicker" class="col-xs-6"></div>
+            <div class="col-xs-6">
+            </div>
+        </div>
+    </div>
+	</div>
+
+  
+      
+</body>
+</html>
